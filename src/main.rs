@@ -21,9 +21,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 dayout: -1,
             };
             let path = Path::new("setting.json");
-            let setting = serde_json::to_string(&setting).unwrap();
-            fs::write(path, &setting).unwrap();
-            setting
+            let tmp = serde_json::to_string(&setting).unwrap();
+            fs::write(path, &tmp).unwrap();
+            tmp
         }
     };
     let setting: Setting = serde_json::from_str(&setting_text).unwrap();
