@@ -1,11 +1,6 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use std::{
-    fs,
-    os::windows::process::CommandExt,
-    path::Path,
-    process::Command,
-};
+use std::{fs, os::windows::process::CommandExt, path::Path, process::Command};
 
 #[derive(Serialize, Deserialize)]
 struct Setting {
@@ -28,7 +23,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let path = Path::new("setting.json");
             let setting = serde_json::to_string(&setting).unwrap();
             fs::write(path, &setting).unwrap();
-            serde_json::to_string(&setting).unwrap()
+            setting
         }
     };
     let setting: Setting = serde_json::from_str(&setting_text).unwrap();
