@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use std::{fs, os::windows::process::CommandExt, path::Path, process::Command};
