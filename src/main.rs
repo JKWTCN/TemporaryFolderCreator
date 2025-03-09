@@ -1,5 +1,5 @@
 use chrono::{DateTime, Utc};
-use std::{fs, path::Path, process::Command};
+use std::{fs, os::windows::process::CommandExt, path::Path, process::Command};
 
 fn main() {
     // println!("Hello, world!");
@@ -21,7 +21,8 @@ fn main() {
         fs::create_dir(path3).unwrap();
     }
     Command::new("explorer")
-        .arg(formatted_path3) // <- Specify the directory you'd like to open.
+        .creation_flags(0x08000000) // <-隐藏窗口
+        .arg(formatted_path3) // <- 打开目录
         .spawn()
         .unwrap();
 }
