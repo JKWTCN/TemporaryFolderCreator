@@ -59,7 +59,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         fs::create_dir(path3).unwrap();
     }
     Command::new("explorer")
-        .creation_flags(0x08000000) // <-隐藏窗口
+        // .creation_flags(0x08000000) // <-隐藏窗口
         .arg(formatted_path3) // <- 打开目录
         .spawn()
         .unwrap();
